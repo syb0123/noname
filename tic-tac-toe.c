@@ -15,7 +15,12 @@ int main(void) {
     while(1) {
         if(turn == 0) {
             printf("(x, y) You :");
-            while(scanf("%d %d", &x, &y) == 2) {
+            while(1) {
+                if(scanf("%d %d", &x, &y) != 2) {
+                    printf("Invalid input. Please try again.\n");
+                    printf("(x, y) You :");
+                    continue;
+                }
                 if(arr[x][y] != ' ') {
                     printf("The place is already taken. Choose a different point.\n");
                     printf("(x, y) You :");
