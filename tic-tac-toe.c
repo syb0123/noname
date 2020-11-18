@@ -2,7 +2,11 @@
 #define ROWS 3
 #define COLS 3
 
-char checkWinner(char arr[ROWS][COLS]) {
+char checkWinner(int moves, char arr[ROWS][COLS]) {
+    if(moves >= 9) {
+        return 'D';
+    }
+    
     for(int i = 0; i < ROWS; i++) {
         if(arr[i][0] != ' ' && (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2])) {
             return arr[i][0];
@@ -18,7 +22,6 @@ char checkWinner(char arr[ROWS][COLS]) {
     if(arr[1][1] != ' ' && ((arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) || (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0]))) {
         return arr[1][1];
     }
-    
     return 0;
 }
 
@@ -79,14 +82,12 @@ int main(void) {
         printf("-------\n");
        
         char winner = checkWinner(arr);
-        if(winner != 0) {
+        if(winner == 'X' || winner == 'O') {
             printf("Winnter is the player \'%c\'!\n", winner);
             return 0;
         }
-            
-        if(countMoves >= 9) {
+        else if(winner == 'D') {
             printf("It's a draw!\n");
-            return 0;
         }
     }
 }
