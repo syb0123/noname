@@ -3,10 +3,6 @@
 #define COLS 3
 
 char checkWinner(int moves, char arr[ROWS][COLS]) {
-    if(moves >= 9) {
-        return 'D';
-    }
-    
     for(int i = 0; i < ROWS; i++) {
         if(arr[i][0] != ' ' && (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2])) {
             return arr[i][0];
@@ -21,6 +17,10 @@ char checkWinner(int moves, char arr[ROWS][COLS]) {
         
     if(arr[1][1] != ' ' && ((arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) || (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0]))) {
         return arr[1][1];
+    }
+    
+    if(moves >= 9) {
+        return 'D';
     }
     return 0;
 }
