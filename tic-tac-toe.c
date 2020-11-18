@@ -1,7 +1,29 @@
 #include <stdio.h>
+#define ROWS 3
+#define COLS 3
+
+char checkWinner(char arr[ROWS][COLS]) {
+    for(int i = 0; i < ROWS; i++) {
+        if(arr[i][0] != ' ' && (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2])) {
+            return arr[i][0];
+        }
+    }
+        
+    for(int i = 0; i < COLS; i++) {
+        if(arr[0][i] != ' ' && (arr[0][i] == arr[1][i] && arr[1][i] == arr[2][i])) {
+            return arr[0][i];
+        }
+    }
+        
+    if(arr[1][1] != ' ' && ((arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) || (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0]))) {
+        return arr[1][1];
+    }
+    
+    return 0;
+}
 
 int main(void) {
-    char arr[3][3] = { {' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '} };
+    char arr[ROWS][COLS] = { {' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '} };
     int countMoves = 0, turn = 0, x, y;
     
     printf("Welcome to tic-tac-toe game!\n");
@@ -56,25 +78,12 @@ int main(void) {
         }
         printf("-------\n");
        
-        for(int i = 0; i < 3; i++) {
-            if(arr[i][0] != ' ' && (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2])) {
-                printf("Winnter is the player \'%c\'!\n", arr[i][0]);
-                return 0;
-            }
-        }
-        
-        for(int i = 0; i < 3; i++) {
-            if(arr[0][i] != ' ' && (arr[0][i] == arr[1][i] && arr[1][i] == arr[2][i])) {
-                printf("Winnter is the player \'%c\'!\n", arr[0][i]);
-                return 0;
-            }
-        }
-        
-        if(arr[1][1] != ' ' && ((arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) || (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0]))) {
-            printf("Winnter is the player \'%c\'!\n", arr[1][1]);
+        char winner = checkWinner(arr);
+        if(winner != 0) {
+            printf("Winnter is the player \'%c\'!\n", winner);
             return 0;
         }
-
+            
         if(countMoves >= 9) {
             printf("It's a draw!\n");
             return 0;
