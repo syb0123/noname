@@ -81,7 +81,7 @@ int main(void) {
         }
         printf("-------\n");
        
-        char winner = checkWinner(arr);
+        char winner = checkWinner(countMoves, arr);
         if(winner == 'X' || winner == 'O') {
             printf("Winnter is the player \'%c\'!\n", winner);
             return 0;
