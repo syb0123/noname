@@ -21,13 +21,15 @@ int main(void) {
                     printf("(x, y) You :");
                     continue;
                 }
-                if(arr[x][y] != ' ') {
-                    printf("The place is already taken. Choose a different point.\n");
+
+                if(x > 2 || y > 2 || x < 0 || y < 0) {
+                    printf("Out of range. Choose a different point.\n");
                     printf("(x, y) You :");
                     continue;
                 }
-                if(x > 2 || y > 2 || x < 0 || y < 0) {
-                    printf("Out of range. Choose a different point.\n");
+                
+                if(arr[x][y] != ' ') {
+                    printf("The place is already taken. Choose a different point.\n");
                     printf("(x, y) You :");
                     continue;
                 }
