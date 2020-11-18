@@ -16,11 +16,7 @@ int main(void) {
         if(turn == 0) {
             printf("(x, y) You :");
             while(1) {
-                if(scanf("%d %d", &x, &y) != 2) {
-                    printf("Invalid input. Please try again.\n");
-                    printf("(x, y) You :");
-                    continue;
-                }
+                scanf("%d %d", &x, &y);
 
                 if(x > 2 || y > 2 || x < 0 || y < 0) {
                     printf("Out of range. Choose a different point.\n");
