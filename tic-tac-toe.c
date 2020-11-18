@@ -88,6 +88,7 @@ int main(void) {
         }
         else if(winner == 'D') {
             printf("It's a draw!\n");
+            return 0;
         }
     }
 }
